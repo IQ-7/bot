@@ -1,4 +1,6 @@
 env:
+  WORKDIR: "/tmp"
+  CIRRUS_CLONE_DEPTH: "1"
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
