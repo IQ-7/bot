@@ -50,6 +50,9 @@ task:
       - git clone --depth=1 https://github.com/IQ-7/android_kernel_xiaomi_whyred --single-branch -b aex-10 kernel/xiaomi/whyred
       - git clone --depth=1 https://github.com/ifeincarnation/vendor_MiuiCamera --single-branch -b 10 vendor/MiuiCamera
       - git clone --depth=1 https://github.com/ifeincarnation/vendor_dirac --single-branch -b 10 vendor/dirac
+      # Source
+      - rm -rf vendor/aosp
+      - git clone --depth=1 https://github.com/IQ-7/platform_vendor_aosp -b 10.x vendor/aosp
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
       - echo "============================"
       - echo "Sync Completed!"
