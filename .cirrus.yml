@@ -1,7 +1,4 @@
 env:
-    rcloneconfig: "ENCRYPTED[9c991a9df6b32e8f7412c5b494f443a885b8eaee36900287a185f292ed6d2dd338197a9df9caefecc2aa8ccec40a4a3d]"
-    tokentl: "ENCRYPTED[1d6733bf1118766713776bce8949f8778d656e736997027b719cabaef53d9c2d1197b284d8178c4fe3e768a138479eba]"
-    idtl: "ENCRYPTED[c756889ae91e72b48cf573502df98e8eb06e589e447bd10f40b94be7562060fa0066208a1c5d3367bd85bfad41edf7c9]"
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
