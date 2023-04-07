@@ -2,6 +2,7 @@ env:
     rcloneconfig: "ENCRYPTED[9c991a9df6b32e8f7412c5b494f443a885b8eaee36900287a185f292ed6d2dd338197a9df9caefecc2aa8ccec40a4a3d]"
     tokentl: "ENCRYPTED[1d6733bf1118766713776bce8949f8778d656e736997027b719cabaef53d9c2d1197b284d8178c4fe3e768a138479eba]"
     idtl: "ENCRYPTED[c756889ae91e72b48cf573502df98e8eb06e589e447bd10f40b94be7562060fa0066208a1c5d3367bd85bfad41edf7c9]"
+    CREDENTIALS: "ENCRYPTED[12156d608faeda813ca6b700fccaf496221fbb2ed1d174d75466f89e1bbbb9a90edce1efe4126eacbbcae269bb404d11]"
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -23,7 +24,7 @@ task:
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
        - git config --global user.name "IQ-7"
        - git config --global user.email "iq7.dev@gmail.com"
-       - echo "ENCRYPTED[12156d608faeda813ca6b700fccaf496221fbb2ed1d174d75466f89e1bbbb9a90edce1efe4126eacbbcae269bb404d11]" > ~/.git-credentials
+       - echo "$CREDENTIALS" > ~/.git-credentials
        - git config --global credential.helper store --file=~/.git-credentials
        - mkdir -p /tmp/ccache
        - rclone copy rom:aex/ccache.tar.gz /tmp -P
