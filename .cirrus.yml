@@ -44,9 +44,13 @@ task:
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/AospExtended/manifest -b 10.x -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_whyred -b 10.x device/xiaomi/whyred
-      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_sdm660-common -b 10.x device/xiaomi/sdm660-common
-      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi --single-branch -b 10.x vendor/xiaomi  
+      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_whyred -b aex-10 device/xiaomi/whyred
+      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_sdm660-common -b aex device/xiaomi/sdm660-common
+      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_whyred -b 10 vendor/xiaomi/whyred
+      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_sdm660-common -b 10 vendor/xiaomi/sdm660-common
+#      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_whyred -b 10.x device/xiaomi/whyred
+#      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_sdm660-common -b 10.x device/xiaomi/sdm660-common
+#      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi --single-branch -b 10.x vendor/xiaomi  
       - git clone --depth=1 https://github.com/IQ-7/android_kernel_xiaomi_whyred --single-branch -b aex-10 kernel/xiaomi/whyred
       - git clone --depth=1 https://github.com/ifeincarnation/vendor_MiuiCamera --single-branch -b 10 vendor/MiuiCamera
       - git clone --depth=1 https://github.com/ifeincarnation/vendor_dirac --single-branch -b 10 vendor/dirac
