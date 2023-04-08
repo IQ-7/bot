@@ -66,8 +66,8 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-#      - ./collect.sh
-      - ./final.sh
+      - ./collect.sh
+#      - ./final.sh
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
@@ -78,7 +78,7 @@ task:
       - echo "Uploading the Build...."
       - echo "============================"
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
-      - rclone copy /tmp/rom/out/target/product/whyred/AospExtended*.zip rom:whyred -P
+#      - rclone copy /tmp/rom/out/target/product/whyred/AospExtended*.zip rom:whyred -P
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Uploaded Successfully!"
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Download link https://rom.builderz.workers.dev/0:/whyred/$(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
