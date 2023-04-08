@@ -11,7 +11,7 @@ task:
       memory: 32G
         
   Build-Env-Setup_background_script:
-       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Setup Build"
+       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Setup Build"
        - export DEBIAN_FRONTEND=noninteractive
        - apt update
        - apt install sudo
@@ -39,7 +39,7 @@ task:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync Source"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync Source"
       - cd /tmp/rom
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/AospExtended/manifest -b 10.x -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
@@ -53,7 +53,7 @@ task:
       # Source
       - rm -rf vendor/aosp
       - git clone --depth=1 https://github.com/IQ-7/platform_vendor_aosp -b 10.x vendor/aosp
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
       - echo "============================"
       - echo "Sync Completed!"
       - echo "============================"
@@ -64,7 +64,7 @@ task:
       - echo "============================"
 #      - ./collect.sh
       - ./final.sh
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Completed!"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
@@ -73,14 +73,14 @@ task:
       - echo "============================"
       - echo "Uploading the Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
       - rclone copy /tmp/rom/out/target/product/whyred/AospExtended*.zip rom:whyred -P
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Uploaded Successfully!"
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Download link https://rom.builderz.workers.dev/0:/whyred/$(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Uploaded Successfully!"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Download link https://rom.builderz.workers.dev/0:/whyred/$(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
       - ./ziping.sh
       - cd /tmp
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
       - rclone copy ccache.tar.gz rom:aex -P
       - echo " "
       - echo "============================"
