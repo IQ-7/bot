@@ -44,16 +44,11 @@ task:
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/AospExtended/manifest -b 10.x -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_whyred -b aex-10 device/xiaomi/whyred
-      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_sdm660-common -b aex device/xiaomi/sdm660-common
-      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_whyred -b 10 vendor/xiaomi/whyred
-      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_sdm660-common -b 10 vendor/xiaomi/sdm660-common
-#      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_whyred -b 10.x device/xiaomi/whyred
-#      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_sdm660-common -b 10.x device/xiaomi/sdm660-common
-#      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi --single-branch -b 10.x vendor/xiaomi  
-      - git clone --depth=1 https://github.com/IQ-7/android_kernel_xiaomi_whyred --single-branch -b aex-10 kernel/xiaomi/whyred
-      - git clone --depth=1 https://github.com/ifeincarnation/vendor_MiuiCamera --single-branch -b 10 vendor/MiuiCamera
-      - git clone --depth=1 https://github.com/ifeincarnation/vendor_dirac --single-branch -b 10 vendor/dirac
+      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_ginkgo -b aosp device/xiaomi/ginkgo
+      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_ginkgo -b 10 vendor/xiaomi/ginkgo
+      - git clone --depth=1 https://github.com/IQ-7/kernel_xiaomi_ginkgo --single-branch -b 10 kernel/xiaomi/ginkgo
+      - git clone --depth=1 https://github.com/ryanzsz/android_vendor_miuicamera --single-branch -b arrow-10.0-ginkgo vendor/miuicamera
+      - git clone --depth=1 https://gitlab.com/IQ-7/clang-proton --single-branch -b master prebuilts/clang/host/linux-x86/clang-12.0
       # Source
       - rm -rf vendor/aosp
       - rm -rf build/make
@@ -70,9 +65,9 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-#      - ./collect.sh
-      - ./final.sh
-      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Completed!"
+      - ./collect.sh
+#      - ./final.sh
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/ginkgo/ && ls AospExtended*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
@@ -81,10 +76,10 @@ task:
       - echo "============================"
       - echo "Uploading the Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
-      - rclone copy /tmp/rom/out/target/product/whyred/AospExtended*.zip rom:whyred -P
-      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip) Uploaded Successfully!"
-      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Download link https://rom.builderz.workers.dev/0:/whyred/$(cd /tmp/rom/out/target/product/whyred/ && ls AospExtended*.zip)"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd /tmp/rom/out/target/product/ginkgo/ && ls AospExtended*.zip)"
+#      - rclone copy /tmp/rom/out/target/product/ginkgo/AospExtended*.zip rom:ginkgo -P
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd /tmp/rom/out/target/product/ginkgo/ && ls AospExtended*.zip) Uploaded Successfully!"
+      - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Download link https://rom.builderz.workers.dev/0:/ginkgo/$(cd /tmp/rom/out/target/product/ginkgo/ && ls AospExtended*.zip)"
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
       - ./ziping.sh
       - cd /tmp

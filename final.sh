@@ -13,5 +13,5 @@ export BUILD_USERNAME=zacky
 export BUILD_HOSTNAME=android-build
 export ALLOW_MISSING_DEPENDENCIES=true
 export SELINUX_IGNORE_NEVERALLOWS=true
-lunch aosp_whyred-userdebug
+lunch aosp_ginkgo-userdebug
 mka bacon -j8
