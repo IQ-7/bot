@@ -25,7 +25,7 @@ task:
        - echo "$CREDENTIALS" > ~/.git-credentials
        - git config --global credential.helper store --file=~/.git-credentials
        - mkdir -p /tmp/ccache
-       - rclone copy rom:aex/ccache.tar.gz /tmp -P
+       - rclone copy rom:aosp/ccache.tar.gz /tmp -P
        - cd /tmp
        - time tar xf ccache.tar.gz
        - cd /tmp
@@ -44,8 +44,8 @@ task:
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/AospExtended/manifest -b 10.x -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_ginkgo -b aosp device/xiaomi/ginkgo
-      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_ginkgo -b 10 vendor/xiaomi/ginkgo
+      - git clone --depth=1 https://github.com/IQ-7/device_xiaomi_ginkgo --single-branch -b aosp device/xiaomi/ginkgo
+      - git clone --depth=1 https://github.com/IQ-7/vendor_xiaomi_ginkgo --single-branch -b 10 vendor/xiaomi/ginkgo
       - git clone --depth=1 https://github.com/IQ-7/kernel_xiaomi_ginkgo --single-branch -b 10 kernel/xiaomi/ginkgo
       - git clone --depth=1 https://github.com/ryanzsz/android_vendor_miuicamera --single-branch -b arrow-10.0-ginkgo vendor/miuicamera
       - git clone --depth=1 https://gitlab.com/IQ-7/clang-proton --single-branch -b master prebuilts/clang/host/linux-x86/clang-12.0
@@ -84,7 +84,7 @@ task:
       - ./ziping.sh
       - cd /tmp
       - curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz rom:aex -P
+      - rclone copy ccache.tar.gz rom:aosp -P
       - echo " "
       - echo "============================"
       - echo "Build Uploaded Successfully!"
